@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/geocode', function (Request $request) {
+    $geocoder = new App\Services\GoogleGeocoder();
+
+    return $geocoder->geocode($request->address);
 });
