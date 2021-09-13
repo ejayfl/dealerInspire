@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WeatherApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ Route::get('/geocode', function (Request $request) {
 
     return $geocoder->geocode($request->address);
 });
+
+Route::get('/weather-info/{appid}/{cityname}', [WeatherApiController::class, 'index']);
